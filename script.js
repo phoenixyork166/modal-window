@@ -11,6 +11,7 @@ const length = btnsShowModal.length
 function showModal() {
     // Showing Modal Window by
     // removing classList 'hidden' from modal
+    // Checkout css .hidden { display = 'none' }
     modal.classList.remove('hidden')
     // Showing Overlay Effect by
     // removing classList 'hidden' from overlay
@@ -18,6 +19,9 @@ function showModal() {
 }
 
 function hideModal() {
+    // Hidding Modal Window by
+    // adding classList 'hidden' from modal
+    // Checkout css .hidden { display = 'none' }
     modal.classList.add('hidden')
     overlay.classList.add('hidden')
 }
@@ -44,5 +48,17 @@ btnCloseModal.addEventListener('click', hideModal)
 // Remove Modal Window & Overlay effect
 overlay.addEventListener('click', overlayHideModal)
 
+// Keyboard events = Global events
+// Global event listener listens on all events in the entire document
+document.addEventListener('keydown', function(event) {
+    console.log('Pressed key', event.key)
+    // If ESC key is clicked, AND
+    // if modal.classList does not have 'hidden' class
+    // Meaning that when Modal Window is active
+    if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+        // Hide modal window
+        hideModal()
+    }
+})
 
 
